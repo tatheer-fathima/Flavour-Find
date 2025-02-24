@@ -1,0 +1,134 @@
+
+
+.restaurant-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    gap: 100px; /* Adjusted spacing */
+    margin-top: 10px;
+    margin-left: 100px;
+    padding: 20px;
+    /* Keeps content centered */
+}
+
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    overflow: hidden;
+}
+
+.restaurant-image {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+/* Details Section */
+.details-section {
+    flex: 2;
+    color: black;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.restaurant-title {
+    font-size: 25px; /* Reduced font size */
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.restaurant-location {
+    font-size: 12px;
+    font-style: italic;
+    color: black;
+}
+
+/* Buttons */
+.toggle-button,
+.visit-button {
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 10px 10px;
+    font-size: 12px; /* Smaller button text */
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.toggle-button {
+    background-color: #2563eb;
+    color: white;
+}
+
+.toggle-button:hover {
+    background-color: #1e40af;
+}
+
+.visit-button {
+    background-color: #facc15;
+    color: black;
+    text-decoration: none;
+}
+
+.visit-button:hover {
+    background-color: #eab308;
+}
+
+/* Menu Section */
+.menu-section {
+    position: absolute; /* Ensure it's positioned relative to a container */
+    top: -10px; /* Moves it 10px upwards, adjust as needed */
+    left: -320px; /* Keeps it positioned to the left */
+    padding: 10px;
+    background: black;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: fit-content;
+}
+
+
+
+/* Menu Title */
+.menu-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+/* Menu Link */
+.menu-link {
+    font-size: 14px;
+    font-weight: bold;
+    color: #facc15;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+.menu-link:hover {
+    color: #eab308;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .restaurant-container {
+        flex-direction: column;
+        width: 100%;
+        height: auto;
+    }
+
+    .restaurant-image {
+        border-radius: 12px;
+        height: 120px;
+    }
+}

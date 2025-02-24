@@ -1,0 +1,169 @@
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Container */
+
+
+/* Title */
+.restaurantt-title {
+    text-align: center;
+    font-size: 50px;
+    font-weight: bold;
+   
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+   
+}
+
+.search-input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Grid Layout for Restaurants */
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 120px;
+    padding: 30px;
+    justify-content: center;
+    transform: translateX(-100px);
+}
+
+/* Card */
+.restaurant-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    width: 120%;
+    margin: 10px;
+}
+
+.restaurant-card:hover {
+    transform: scale(1.05);
+}
+
+/* Image */
+.restaurantt-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Info */
+.restaurant-info {
+    padding: 10px;
+}
+
+.restaurant-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.restaurant-location {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.restaurant-cost {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Ratings */
+.restaurant-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.rating-badge {
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    border-radius: 5px;
+}
+
+.rating-green {
+    background-color: #28a745;
+}
+
+.rating-yellow {
+    background-color: #ffc107;
+}
+
+.rating-orange {
+    background-color: #fd7e14;
+}
+
+.rating-red {
+    background-color: #dc3545;
+}
+
+.rating-votes {
+    font-size: 14px;
+    color: #555;
+    margin-left: 10px;
+}
+
+/* View Details Button */
+.view-details {
+    display: block;
+    margin-top: 15px;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.view-details:hover {
+    background-color: #0056b3;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.pagination-btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+}
+
+.pagination-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}

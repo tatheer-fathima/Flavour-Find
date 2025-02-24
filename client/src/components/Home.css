@@ -1,0 +1,150 @@
+/* General Styles */
+.body{
+  background: rgb(10, 16, 31);
+}
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Light & Dark Theme */
+.home-container.light {
+  background-color: #f8f9fa;
+  color: #222;
+}
+
+.home-container.dark {
+  background-color: #222;
+  color: #f8f9fa;
+}
+
+/* Title */
+.title {
+  margin-top: -100px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Search Box */
+.search-box {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.search-box button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Location and Image Search (Side by Side) */
+.location-image-container {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Location Search */
+.location-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #333;
+  padding: 15px;
+  border-radius: 8px;
+  width: 45%;
+  max-width: 400px;
+  transition: 0.3s;
+}
+
+.location-box input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  width: 95%;
+  font-size: 1rem;
+}
+
+.location-box button {
+  padding: 10px;
+  background: green;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Image Search */
+.image-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #444;
+  padding: 15px;
+  border-radius: 8px;
+  width: 45%;
+}
+
+.image-box input {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  width: 100%;
+}
+
+.image-box button {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* View All Button */
+.view-all {
+  cursor: pointer;
+  margin-top: 20px;
+  background: #ff9800;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .location-box, .image-box {
+    width: 100%;
+  }
+}

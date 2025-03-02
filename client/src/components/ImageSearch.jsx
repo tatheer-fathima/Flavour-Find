@@ -2,13 +2,14 @@ import { useState } from "react";
 
 const ImageSearch = () => {
   const [image, setImage] = useState(null);
-  const [restaurants, setRestaurants] = useState([]);
+  const [cuisine, setCuisine] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // Handle file input change
   const handleImageChange = (event) => {
     const file = event.target.files[0];
-    if (file && file.type.startsWith("image/")) {
+    if (file) {
       setImage(file);
       setError(null);
     } else {
@@ -17,7 +18,8 @@ const ImageSearch = () => {
     }
   };
 
-  const fetchRestaurants = async () => {
+  // Function to detect cuisine
+  const detectCuisine = async () => {
     if (!image) {
       setError("No image selected. Please upload an image.");
       return;
@@ -25,26 +27,30 @@ const ImageSearch = () => {
 
     setLoading(true);
     setError(null);
+    setCuisine(null);
+
     try {
       const formData = new FormData();
       formData.append("image", image);
 
-      const response = await fetch(
-        "https://restaurant-production-06c2.up.railway.app/restaurants/imgsearch",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
+      const response = await fetch("https://restaurant-production-06c2.up.railway.app/image/detect-cuisine", {
+        method: "POST",
+        body: formData,
+      });
+      
 
       if (!response.ok) {
         throw new Error(`Server Error: ${response.status} ${response.statusText}`);
       }
 
       const data = await response.json();
-      setRestaurants(data.restaurants || []);
+      if (!data.cuisine) {
+        throw new Error("Cuisine detection failed. Try another image.");
+      }
+
+      setCuisine(data.cuisine);
     } catch (error) {
-      console.error("Error fetching restaurants:", error);
+      console.error("Error detecting cuisine:", error);
       setError(error.message);
     } finally {
       setLoading(false);
@@ -53,9 +59,9 @@ const ImageSearch = () => {
 
   return (
     <div className="p-5 max-w-screen-xl mx-auto bg-gray-900 text-white">
-      <h2 className="text-center text-3xl font-semibold mb-5">Search Restaurants by Image</h2>
-      
-      {/* Flex container for input and button */}
+      <h2 className="text-center text-3xl font-semibold mb-5">Detect Cuisine from Image</h2>
+
+      {/* File input and button */}
       <div className="flex flex-col sm:flex-row justify-center items-center mb-4 space-y-4 sm:space-y-0 sm:space-x-4">
         <input
           type="file"
@@ -64,32 +70,22 @@ const ImageSearch = () => {
           className="p-3 border border-gray-700 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-600 w-full sm:w-auto"
         />
         <button
-          onClick={fetchRestaurants}
+          onClick={detectCuisine}
           disabled={loading}
           className="p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-200 w-full sm:w-auto"
         >
-          {loading ? "Searching..." : "Search"}
+          {loading ? "Detecting..." : "Detect Cuisine"}
         </button>
       </div>
 
       {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-6">
-        {restaurants.map((restaurant, index) => (
-          <div key={index} className="border border-gray-700 p-4 rounded-lg text-center bg-gray-800 shadow-lg hover:shadow-xl transition duration-200">
-            <img
-              src={restaurant.featured_image || "https://via.placeholder.com/150"}
-              alt={restaurant.name}
-              className="w-full h-40 object-cover rounded-md mb-4"
-            />
-            <h3 className="text-xl font-semibold">{restaurant.name}</h3>
-            <p><strong>City:</strong> {restaurant.location.city || "N/A"}</p>
-            <p><strong>Locality:</strong> {restaurant.location.locality_verbose || "N/A"}</p>
-            <p><strong>Address:</strong> {restaurant.location.address || "N/A"}</p>
-            <p><strong>Zipcode:</strong> {restaurant.location.zipcode || "N/A"}</p>
-          </div>
-        ))}
-      </div>
+      {cuisine && (
+        <div className="mt-6 text-center">
+          <h3 className="text-xl font-semibold">Detected Cuisine:</h3>
+          <p className="text-2xl font-bold text-green-400">{cuisine}</p>
+        </div>
+      )}
     </div>
   );
 };

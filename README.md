@@ -8,5 +8,4 @@ Flavour Find is a restaurant search application that helps users find their favo
 - 📍 **Find Nearby Restaurants** using latitude, longitude, and radius.
 - 📡 **Use Current Location** to find restaurants near you.
 - 📸 **Image-Based Search**: Upload an image to search for restaurants visually.
-- 🌙 **Light/Dark Theme Toggle** for a better user experience.
 - 📋 **View All Restaurants** with a single click.
